@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the path to the shell script
-SHELL_SCRIPT_PATH="/opt/aikaan/scripts/gps_script.sh"
+SHELL_SCRIPT_PATH="/opt/aikaan/scripts/gps-location.sh"
 
 # Create the directory if it doesn't exist
 mkdir -p /opt/aikaan/scripts
