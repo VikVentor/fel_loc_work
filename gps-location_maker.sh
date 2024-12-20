@@ -3,7 +3,7 @@
 # Define the path to the shell script
 SHELL_SCRIPT_PATH="/opt/aikaan/scripts/gps-location.sh"
 
-# Create the directory if it doesn't exist
+# Create the 'scripts' directory if it doesn't exist
 mkdir -p /opt/aikaan/scripts
 
 # Create the shell script with the initial content
