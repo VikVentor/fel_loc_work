@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Define the current user
+USER_NAME=$(whoami)
+
 # Define the path to the shell script
 
 # Create the 'scripts' directory if it doesn't exist
@@ -21,7 +24,7 @@ chmod +x $SHELL_SCRIPT_PATH
 echo "Shell script created and set as executable at $SHELL_SCRIPT_PATH"
 
 # Define the cron job to be added
-cron_job="@reboot sudo /usr/bin/python3 /home/ramsoc/gps_loc.py >> /home/ramsoc/gps_loc.log 2>&1"
+cron_job="@reboot sudo /usr/bin/python3 /home/$USER_NAME/gps_loc.py >> /home/$USER_NAME/gps_loc.log 2>&1"
 
 # Check if the cron job is already in the crontab
 crontab -l | grep -F "$cron_job" > /dev/null
@@ -34,7 +37,7 @@ else
 fi
 
 # Modify sudoers to allow password-less sudo for the script (This step is critical)
-echo "ramsoc ALL=(ALL) NOPASSWD: /usr/bin/python3 /home/ramsoc/gps_loc.py" | sudo tee -a /etc/sudoers > /dev/null
+echo "$USER_NAME ALL=(ALL) NOPASSWD: /usr/bin/python3 /home/$USER_NAME/gps_loc.py" | sudo tee -a /etc/sudoers > /dev/null
 
 # Confirm that sudoers modification was successful
 echo "Sudoers file updated to allow password-less sudo for the script."
